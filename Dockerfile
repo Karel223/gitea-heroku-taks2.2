@@ -1,9 +1,6 @@
 # Użyj oficjalnego obrazu Gitea w trybie rootless
 FROM gitea/gitea:1.14.5-rootless
 
-# Skopiuj dane startowe (opcjonalnie, jeśli masz predefiniowaną konfigurację)
-# COPY ./data /data
-
 # Eksponuj wymagane porty
 EXPOSE 3000
 EXPOSE 22
