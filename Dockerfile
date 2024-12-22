@@ -1,17 +1,12 @@
-# Użyj obrazu Python jako bazy
-FROM python:3.9
+# Użyj oficjalnego obrazu Gitea w trybie rootless
+FROM gitea/gitea:1.14.5-rootless
 
-# Ustaw katalog roboczy
-WORKDIR /app
+# Skopiuj dane startowe (opcjonalnie, jeśli masz predefiniowaną konfigurację)
+# COPY ./data /data
 
-# Skopiuj pliki aplikacji
-COPY . .
+# Eksponuj wymagane porty
+EXPOSE 3000
+EXPOSE 22
 
-# Zainstaluj zależności
-RUN pip install -r requirements.txt
-
-# Eksponuj port aplikacji
-EXPOSE 5000
-
-# Uruchom aplikację
-CMD ["python", "app.py"]
+# Uruchom serwer Gitea
+CMD ["/usr/bin/entrypoint"]
